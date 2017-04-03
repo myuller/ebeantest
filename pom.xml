@@ -10,9 +10,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.avaje.ebean</groupId>
+            <groupId>io.ebean</groupId>
             <artifactId>ebean</artifactId>
-            <version>8.2.3</version>
+            <version>10.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -34,9 +34,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.avaje.ebean</groupId>
+                <groupId>io.ebean</groupId>
                 <artifactId>ebean-maven-plugin</artifactId>
-                <version>8.2.1</version>
+                <version>10.1.7</version>
                 <executions>
                     <execution>
                         <id>main</id>

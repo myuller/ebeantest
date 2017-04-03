@@ -1,12 +1,9 @@
 package main;
 
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.EbeanServer;
-import com.avaje.ebean.config.dbplatform.DbPlatformName;
-import com.avaje.ebean.dbmigration.DbMigration;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import io.ebean.Ebean;
 import models.Employee;
 
 import java.io.StringWriter;
@@ -18,10 +15,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-//        DbMigration dbMigration = new DbMigration();
-//        dbMigration.setPlatform(DbPlatformName.POSTGRES);
-//        dbMigration.generateMigration();
-
         List<Employee> employees = Ebean.createQuery(Employee.class)
                 .fetch("department")
                 .fetch("department.offices")
@@ -32,5 +25,9 @@ public class Main {
         StringWriter writer = new StringWriter();
         mapper.writeValue(writer, employees);
         System.out.println(writer.toString());
+
+        if(employees.size() != 4) throw new IllegalStateException("employees.size() != 4");
+        if (employees.get(0).getDepartment().getOffices().size() != 4) // BUG HERE
+            throw new IllegalStateException("employees.get(0).getDepartment().getOffices().size() != 4");
     }
 }

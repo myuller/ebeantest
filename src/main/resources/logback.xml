@@ -7,10 +7,10 @@
         </encoder>
     </appender>
 
-    <logger name="org.avaje.ebean.SQL" level="TRACE"/>
-    <logger name="org.avaje.ebean.TXN" level="TRACE"/>
+    <logger name="org.avaje.ebean.SQL" level="INFO"/>
+    <logger name="org.avaje.ebean.TXN" level="INFO"/>
 
-    <root level="TRACE">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 
