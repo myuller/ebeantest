@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<migration xmlns="http://ebean-orm.github.io/xml/ns/dbmigration">
+    <changeSet type="apply">
+        <createTable name="department" pkName="pk_department">
+            <column name="id" type="bigint" primaryKey="true"/>
+            <column name="name" type="varchar(255)"/>
+        </createTable>
+        <createTable name="employee" pkName="pk_employee">
+            <column name="id" type="bigint" primaryKey="true"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="department_id" type="bigint" references="department.id" foreignKeyName="fk_employee_department_id" foreignKeyIndex="ix_employee_department_id"/>
+        </createTable>
+        <createTable name="office" pkName="pk_office">
+            <column name="id" type="bigint" primaryKey="true"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="department_id" type="bigint" references="department.id" foreignKeyName="fk_office_department_id" foreignKeyIndex="ix_office_department_id"/>
+        </createTable>
+    </changeSet>
+</migration>
